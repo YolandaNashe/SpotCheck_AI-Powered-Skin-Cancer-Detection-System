@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Cancer health support Chatbot</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+          /*  background-image: url('back_pic.jpg'); /* Background image */
+            /*background-image: url("back_pic.jpg");
+           /* background-color: #e0f7fa; blueish background*/
+            background-image: url("static/back_pic.jpg");
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background-color: #15273d;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .chat-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .chat-messages {
+            max-height: 300px;
+            overflow-y: scroll;
+            padding: 10px;
+            flex: 1;
+            background: #b3e5fc;
+        }
+
+        .user-message, .bot-message {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 8px;
+        }
+
+        .user-message {
+            background-color: #0000ff;
+            color: #fff;
+            align-self: flex-end;
+        }
+
+        .bot-message {
+            background-color: #e1f5fe;
+            color: #333;
+            align-self: flex-start;
+        }
+
+        .chat-input {
+            display: flex;
+            margin-top: 10px;
+            background-color: #f9f9f9;
+            padding: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .chat-input button {
+            padding: 8px 20px;
+            background-color: #120c2a;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .chat-input button:hover {
+            background-color: #01579b;
+        }
+        .typing-indicator {
+            display: none;
+            text-align: left;
+            background: #e1f5fe; /* Light blue background */
+            color: #000;
+            align-self: flex-start;
+            padding: 10px;
+            border-radius: 15px;
+            max-width: 75%;
+            word-wrap: break-word;
+            margin: 10px 0;
+        }
+        .delete-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #ff5252;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            display: none;
+        }
+        .messages div:hover .delete-button {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>Skin Cancer Health Support Chatbot</h1>
+        </div>
+        <div class="chat-messages" id="chat-area">
+            <!-- Chat messages will be displayed here -->
+        </div>
+        <div class="typing-indicator" id="typingIndicator">Chatbot is typing...</div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Type your message..." onkeydown="handleKeyPress(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Chatbot -->
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById("user-input").value;
+            if (userInput.trim() !== "") {
+                appendMessage(userInput, true);
+                document.getElementById("user-input").value = "";
+
+                // Replace with your API endpoint for chat interaction
+                fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message: userInput })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    var botResponse = data.response;
+                    appendMessage(botResponse, false);
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+
+        function appendMessage(message, isUser) {
+            var chatArea = document.getElementById("chat-area");
+            var messageElem = document.createElement("div");
+            messageElem.className = isUser ? "user-message" : "bot-message";
+            messageElem.innerText = message;
+            chatArea.appendChild(messageElem);
+
+            // Automatically scroll chat area to bottom
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>

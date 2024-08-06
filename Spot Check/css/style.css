@@ -1,0 +1,202 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    margin: 0;
+    padding: 0;
+}
+
+/* style.css */
+
+/* Navbar Styles */
+/* Navbar Styles */
+.navbar {
+    background-color: #ffffff; /* Solid white background */
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Smooth shadow */
+    border-bottom: 1px solid #e1e1e1; /* Optional bottom border for added definition */
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #004d00; /* Solid dark green color */
+    transition: color 0.4s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.navbar-brand:hover {
+    color: #003300; /* Slightly darker dark green on hover */
+    transform: scale(1.05);
+}
+
+.navbar-nav .nav-link {
+    color: #333333; /* Dark gray color for text */
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
+    color: #333333; /* Dark gray color for text on hover */
+    background-color: transparent; /* No background color */
+    border-bottom: 2px solid #004d00; /* Dark green underline for active link */
+    transform: scale(1.05);
+}
+
+.navbar-nav .nav-item + .nav-item {
+    margin-left: 1rem;
+}
+
+.navbar .dropdown-menu {
+    background: rgba(0, 0, 0, 0.1); /* Very light background for dropdown menu */
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Smooth shadow */
+}
+
+.navbar .dropdown-menu .dropdown-item {
+    color: #333333; /* Dark gray color for dropdown items */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+    background-color: #004d00; /* Dark green background on hover */
+    color: #ffffff; /* White text on hover */
+    transform: scale(1.02);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.carousel {
+    margin-top: 1rem;
+}
+
+.carousel-inner {
+    height: 80vh;
+}
+
+.carousel-item {
+    position: relative;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.466);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    width: 80%;
+    left: 50%;
+    transform: translate(-6%, -50%);
+}
+
+.carousel-caption h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #181717;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px #000000b0;
+}
+
+.carousel-caption p {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 3px #000000c0;
+}
+
+.search-container {
+    margin-top: 1rem;
+}
+
+.search-container .form-control {
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.search-container .btn {
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #28a745;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    margin-left: 0.5rem;
+}
+
+.search-container .btn:hover {
+    background-color: #218838;
+}
+
+
+.trending-searches {
+    margin-top: 2rem;
+    color: #fff;
+    font-size: 10px;
+}
+
+.trending-searches span {
+    font-weight: bold;
+    margin-right: 1rem;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.trending-searches a {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    margin-right: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.trending-searches a:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .carousel-caption {
+        width: 90%;
+    }
+
+    .carousel-caption h1 {
+        font-size: 2rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1rem;
+    }
+
+    .trending-searches a {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+    }
+}
